@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0.8" y2="1">
+    <stop offset="0" stop-color="#f2e9dc"/><stop offset="1" stop-color="#c8b6a2"/>
+  </linearGradient>
+  <radialGradient id="sunGlow"><stop offset="0" stop-color="#c66b50" stop-opacity=".42"/><stop offset="1" stop-color="#c66b50" stop-opacity="0"/></radialGradient>
+  <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse"><path d="M72 0H0V72" fill="none" stroke="#ffffff" stroke-opacity=".18"/></pattern>
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#1F6F5C" opacity=".16"/></pattern>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".055"/></feComponentTransfer></filter>
+</defs>
+<rect width="1600" height="1000" fill="url(#sky)"/>
+<rect width="1600" height="1000" fill="url(#grid)" opacity=".72"/>
+<circle cx="800" cy="235" r="250" fill="url(#sunGlow)"/><circle cx="800" cy="235" r="74" fill="#c9755a" opacity=".48"/>
+<polygon points="0,620 250,540 450,580 660,500 850,570 1080,500 1320,580 1600,510 1600,780 0,780" fill="#b5a58f" opacity="0.5"/>
+<rect x="0" y="700" width="1600" height="300" fill="#c0af95" opacity=".38"/>
+<g fill="#b88062" opacity=".72"><rect x="80" y="600" width="220" height="200"/><rect x="1300" y="600" width="220" height="200"/><rect x="350" y="650" width="160" height="150"/><rect x="1090" y="650" width="160" height="150"/></g>
+<rect x="550" y="500" width="500" height="310" fill="#9a5b4b"/>
+<path d="M432.0 455 Q564.4 441 657.4 379 Q800 343 942.6 379 Q1035.6 441 1168.0 455Z" fill="#55433a"/>
+<path d="M449.4 458 Q800 427 1150.6 458" fill="none" stroke="#bd6b4f" stroke-width="5" opacity=".55"/>
+<rect x="539.6" y="455" width="520.8" height="22" rx="3" fill="#55433a" opacity=".9"/>
+<rect x="715" y="585" width="170" height="225" fill="#352e2a"/>
+<rect x="610" y="560" width="65" height="80" fill="#dbb78d"/><rect x="925" y="560" width="65" height="80" fill="#dbb78d"/>
+<g fill="#e6c59e" opacity=".7"><rect x="392" y="600" width="34" height="50"/><rect x="1175" y="600" width="34" height="50"/></g>
+<g fill="none" stroke="#74604d" stroke-width="4" stroke-linecap="round" opacity=".55"><path d="M330 280q12-10 24 0q12-10 24 0"/><path d="M418 242q9-8 18 0q9-8 18 0"/><path d="M254 208q7-6 14 0q7-6 14 0"/></g><polyline points="800,950 800,850 800,740 800,620 800,505" fill="none" stroke="#e56b3f" stroke-width="5" stroke-dasharray="13 17" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/><circle cx="800" cy="950" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/><circle cx="800" cy="850" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/><circle cx="800" cy="740" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/><circle cx="800" cy="620" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/><circle cx="800" cy="505" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/>
+<rect width="1600" height="1000" filter="url(#grain)" opacity=".55"/>
+<g fill="none" stroke="#ffffff" stroke-opacity=".46">
+  <path d="M0 56H1600M0 944H1600M48 0V1000M1552 0V1000"/>
+  <path d="M40 48h16M40 48v16M1544 944h16M1560 944v-16"/>
+</g>
+<g fill="#945d4d" font-family="Arial, sans-serif" font-size="14" letter-spacing="4" opacity=".62">
+  <text x="62" y="45">CITYWALK / FIELD STUDY</text>
+  <text x="62" y="980">31°14′N  121°28′E</text>
+</g>
+</svg>

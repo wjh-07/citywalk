@@ -1,0 +1,90 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="把城市漫游路线排成 1 至 3 天行程，自动计算时间和预算。">
+  <title>我的行程 · 城市漫游计划</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page-planner">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div id="site-header"></div>
+  <main id="main" class="planner-page">
+    <div class="container">
+      <header class="planner-header">
+        <div>
+          <span class="eyebrow">YOUR WALK / 1–3 DAYS</span>
+          <h1>把路线，<br>排成一天。</h1>
+          <p>加入路线后，站点会自动按顺序排好。拖动、换天或删除，再让时间和预算重新计算。</p>
+        </div>
+        <div class="planner-controls" id="planner-controls" hidden>
+          <label class="control">
+            <span>开始日期</span>
+            <input id="plan-start-date" type="date">
+          </label>
+          <label class="control">
+            <span>行程天数</span>
+            <select id="plan-day-count">
+              <option value="1">1 天</option>
+              <option value="2">2 天</option>
+              <option value="3">3 天</option>
+            </select>
+          </label>
+          <button class="btn btn--outline btn--small" id="clear-plan" type="button">清空行程</button>
+          <button class="btn btn--primary btn--small" id="export-plan" type="button">导出行程</button>
+        </div>
+      </header>
+
+      <div id="planner-empty"></div>
+
+      <div class="planner-layout" id="planner-layout" hidden>
+        <div class="planner-main">
+          <div class="planner-toolbar">
+            <div>
+              <span class="eyebrow">ITINERARY</span>
+              <h2 id="plan-city-title">我的城市行程</h2>
+              <p id="plan-city-summary"></p>
+            </div>
+            <a class="btn btn--outline btn--small" id="add-more-routes" href="explore.html">继续挑选路线 <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="day-tabs" id="day-tabs" role="tablist" aria-label="行程日期"></div>
+          <div class="day-schedule" id="day-schedule"></div>
+          <div class="planner-map-card">
+            <div class="planner-map-card__head">
+              <div>
+                <span class="eyebrow">DAY MAP</span>
+                <h3>当天路线地图</h3>
+              </div>
+              <span id="planner-map-meta">本地示意地图</span>
+            </div>
+            <div class="map-shell planner-map" id="planner-map" aria-label="当天路线地图"></div>
+          </div>
+        </div>
+
+        <aside class="planner-sidebar">
+          <section class="summary-card" aria-labelledby="summary-title">
+            <div id="summary-content"></div>
+          </section>
+          <div class="planner-tip">
+            <span class="eyebrow">FIELD NOTES</span>
+            <h2>一点小提示</h2>
+            <p>路线按每天 09:00 出发排程，每两站之间预留 20 分钟交通时间。这里的时间与费用是课程演示用近似值，出发前请再确认开放时间。</p>
+            <a class="text-link" href="explore.html">去找更多路线 <span aria-hidden="true">↗</span></a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/ui.js"></script>
+  <script defer src="js/map.js"></script>
+  <script defer src="js/planner.js"></script>
+</body>
+</html>

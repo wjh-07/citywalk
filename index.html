@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="城市漫游计划：用脚步重新认识南京、北京、成都、大理。">
+  <title>城市漫游计划 · 用脚步重新认识一座城</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page-home">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div id="site-header"></div>
+  <main id="main">
+    <section class="home-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker">CITYWALK / 04 CITIES</div>
+          <h1 class="hero-title">用脚步，<br>重新认识<em>一座城</em>。</h1>
+          <p class="hero-sub">从一条街开始，走进城市的褶皱。我们为南京、北京、成都和大理整理了 12 条可以慢慢走完的城市路线。</p>
+          <form class="hero-search" id="home-search" role="search">
+            <label>
+              <span class="sr-only">搜索城市、路线或地标</span>
+              <input id="home-search-input" name="q" type="search" autocomplete="off" placeholder="搜索城市、路线或地标">
+            </label>
+            <button class="btn btn--primary" type="submit">开始探索</button>
+          </form>
+          <div class="hero-actions">
+            <a class="btn btn--outline" href="explore.html">浏览全部路线 <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#how-it-works">它怎么工作 <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-stats" aria-label="项目数据">
+            <div class="hero-stat"><strong>04</strong><span>座城市</span></div>
+            <div class="hero-stat"><strong>12</strong><span>条路线</span></div>
+            <div class="hero-stat"><strong>58</strong><span>个真实地标</span></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="hero-art__image">
+            <img id="hero-image" src="assets/images/cities/nanjing.svg" alt="南京城市漫游封面" fetchpriority="high">
+          </div>
+          <div class="hero-art__caption">
+            <span>FIELD NOTE 01 / JIANGSU</span>
+            <strong>梧桐树下，半部民国史</strong>
+          </div>
+          <div class="hero-map-card">
+            <div class="hero-map-card__top"><span>SELECTED WALK</span><i></i></div>
+            <strong>梧桐民国线</strong>
+            <p>颐和路 → 玄武湖 · 5 站</p>
+            <div class="hero-map-card__line"><i></i><span></span><i></i><span></span><i></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line" id="cities">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">CHOOSE A CITY</span>
+            <h2>先去哪里走走？</h2>
+          </div>
+          <p>每座城市三条路线，历史、街区、自然与烟火气各有入口。选一个城市，先感受它的呼吸。</p>
+        </div>
+        <div class="city-grid" id="city-grid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">CURATED ROUTES</span>
+            <h2>本周精选路线</h2>
+          </div>
+          <p>不用做攻略，挑一条喜欢的路线，点开就能看到沿途站点、时间与预算。</p>
+        </div>
+        <div class="route-grid" id="featured-routes"></div>
+        <div class="section-end-link"><a class="btn btn--outline" href="explore.html">查看全部 12 条路线 <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="section section--line" id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">HOW IT WORKS</span>
+            <h2>把漫游变成计划</h2>
+          </div>
+          <p>从一个模糊的周末念头，到一份能带出门的路线。只需要三步。</p>
+        </div>
+        <div class="how-grid">
+          <article class="how-card">
+            <span class="how-card__num">01</span>
+            <h3>选一座城</h3>
+            <p>先别急着做攻略。看看城市封面，找到你当下想去的那种气质。</p>
+          </article>
+          <article class="how-card">
+            <span class="how-card__num">02</span>
+            <h3>挑一条路线</h3>
+            <p>按主题、时长和预算筛选，路线已按步行顺序排好，打开即可出发。</p>
+          </article>
+          <article class="how-card">
+            <span class="how-card__num">03</span>
+            <h3>排进行程</h3>
+            <p>把路线加入 1–3 天行程，自动排出时间与预算，最后导出带走。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-cta">
+      <div class="container home-cta__inner">
+        <div>
+          <span class="eyebrow eyebrow--light">READY TO WALK?</span>
+          <h2>下一次出门，<br>从一条路线开始。</h2>
+        </div>
+        <div class="home-cta__actions">
+          <a class="btn btn--light" href="explore.html">探索路线 <span aria-hidden="true">↗</span></a>
+          <a class="text-link text-link--light" href="planner.html">打开我的行程 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/ui.js"></script>
+  <script defer src="js/map.js"></script>
+  <script defer src="js/home.js"></script>
+</body>
+</html>

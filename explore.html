@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="按城市、主题、时长和预算筛选城市漫游路线。">
+  <title>探索路线 · 城市漫游计划</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page-explore">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div id="site-header"></div>
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <div>
+          <span class="eyebrow">EXPLORE / 12 ROUTES</span>
+          <h1 class="page-title">找一条，<br>想走的路。</h1>
+          <p class="page-sub">搜索地标，或按城市、主题、时长和预算组合筛选。每条路线都标好了站点与建议停留时间。</p>
+        </div>
+        <aside class="page-hero__aside">
+          <strong>12</strong>
+          条城市路线<br>
+          来自 4 座城市 · 58 个真实地标
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--tight explore-section">
+      <div class="container">
+        <form class="filter-panel" id="filter-form" aria-label="路线筛选">
+          <div class="filter-top">
+            <label class="filter-search">
+              <span>搜索路线或站点</span>
+              <input id="explore-search" type="search" autocomplete="off" placeholder="例如：梧桐、胡同、洱海、博物馆">
+            </label>
+            <label class="sort-control">
+              <span class="sr-only">排序方式</span>
+              <select id="explore-sort" aria-label="路线排序">
+                <option value="recommended">推荐排序</option>
+                <option value="short">时长从短到长</option>
+                <option value="budget">预算从低到高</option>
+                <option value="distance">距离从近到远</option>
+              </select>
+            </label>
+          </div>
+          <div class="filter-row">
+            <div class="filter-group">
+              <span>城市</span>
+              <div class="chip-row" id="filter-city" role="group" aria-label="按城市筛选"></div>
+            </div>
+            <div class="filter-group">
+              <span>主题</span>
+              <div class="chip-row" id="filter-theme" role="group" aria-label="按主题筛选"></div>
+            </div>
+            <div class="filter-group">
+              <span>时长</span>
+              <div class="chip-row" id="filter-duration" role="group" aria-label="按时长筛选"></div>
+            </div>
+            <div class="filter-group">
+              <span>预算</span>
+              <div class="chip-row" id="filter-budget" role="group" aria-label="按预算筛选"></div>
+            </div>
+          </div>
+        </form>
+
+        <div class="results-bar">
+          <p>找到 <strong id="result-count">12</strong> 条路线</p>
+          <button class="reset-filters" id="reset-filters" type="button">重置全部筛选</button>
+        </div>
+        <div class="sr-only" id="filter-status" aria-live="polite"></div>
+        <div class="route-grid" id="explore-grid"></div>
+        <div id="explore-empty" hidden></div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/ui.js"></script>
+  <script defer src="js/map.js"></script>
+  <script defer src="js/explore.js"></script>
+</body>
+</html>

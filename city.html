@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="查看城市的经典漫游路线、站点与地图。">
+  <title>城市路线 · 城市漫游计划</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page-city">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div id="site-header"></div>
+  <main id="main">
+    <section class="city-hero" id="city-hero" hidden>
+      <div class="city-hero__bg">
+        <img id="city-hero-image" src="" alt="">
+      </div>
+      <div class="container city-hero__inner">
+        <div class="city-hero__copy">
+          <span class="city-hero__latin" id="city-latin"></span>
+          <h1 id="city-name"></h1>
+          <p class="city-hero__tagline" id="city-tagline"></p>
+          <p class="city-hero__intro" id="city-intro"></p>
+          <div class="city-hero__stats" id="city-stats"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" id="city-content" hidden>
+      <div class="container">
+        <div class="city-layout">
+          <div>
+            <div class="section-heading city-list-heading">
+              <div>
+                <span class="eyebrow">CITY WALKS</span>
+                <h2>从这里开始走</h2>
+              </div>
+              <p>选择一条路线，右侧地图会同步显示站点与路径。</p>
+            </div>
+            <div class="city-route-list" id="city-route-list"></div>
+          </div>
+          <aside class="city-map-panel">
+            <div class="planner-map-card">
+              <div class="planner-map-card__head">
+                <div>
+                  <span class="eyebrow">ROUTE MAP</span>
+                  <h3 id="city-map-title">路线地图</h3>
+                </div>
+                <span id="city-map-meta"></span>
+              </div>
+              <div class="map-shell" id="city-map" aria-label="城市路线地图"></div>
+            </div>
+            <div class="city-selected" id="city-selected-info"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="city-empty" hidden>
+      <div class="container" id="city-empty-content"></div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/ui.js"></script>
+  <script defer src="js/map.js"></script>
+  <script defer src="js/city.js"></script>
+</body>
+</html>

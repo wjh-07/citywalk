@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0.8" y2="1">
+    <stop offset="0" stop-color="#ede4d7"/><stop offset="1" stop-color="#b9a793"/>
+  </linearGradient>
+  <radialGradient id="sunGlow"><stop offset="0" stop-color="#d17854" stop-opacity=".42"/><stop offset="1" stop-color="#d17854" stop-opacity="0"/></radialGradient>
+  <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse"><path d="M72 0H0V72" fill="none" stroke="#ffffff" stroke-opacity=".18"/></pattern>
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#1F6F5C" opacity=".16"/></pattern>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".055"/></feComponentTransfer></filter>
+</defs>
+<rect width="1600" height="1000" fill="url(#sky)"/>
+<rect width="1600" height="1000" fill="url(#grid)" opacity=".72"/>
+<circle cx="1260" cy="220" r="230" fill="url(#sunGlow)"/><circle cx="1260" cy="220" r="64" fill="#d19766" opacity=".45"/>
+<polygon points="0,610 220,530 450,575 680,490 910,560 1140,490 1380,565 1600,520 1600,760 0,760" fill="#aa9984" opacity="0.42"/>
+<rect x="0" y="710" width="1600" height="290" fill="#b8aa94" opacity=".5"/>
+<rect x="500" y="495" width="600" height="300" fill="#a8624f"/>
+<path d="M406.0 455 Q541.6 441 643.6 379 Q800 343 956.4 379 Q1058.4 441 1194.0 455Z" fill="#554039"/>
+<path d="M422.2 458 Q800 427 1177.8 458" fill="none" stroke="#cf7957" stroke-width="5" opacity=".55"/>
+<rect x="514.4000000000001" y="455" width="571.1999999999999" height="22" rx="3" fill="#554039" opacity=".9"/>
+<rect x="690" y="570" width="220" height="225" fill="#3a302b"/>
+<rect x="550" y="560" width="86" height="100" fill="#d9b47f"/><rect x="965" y="560" width="86" height="100" fill="#d9b47f"/>
+<g><path d="M400 304.2v18" stroke="#564838" stroke-width="3"/><ellipse cx="400" cy="390" rx="19.8" ry="27.500000000000004" fill="#e56b3f"/><path d="M380.2 390h39.6" stroke="#f5d7b8" stroke-width="3"/></g><g><path d="M1200 304.2v18" stroke="#564838" stroke-width="3"/><ellipse cx="1200" cy="390" rx="19.8" ry="27.500000000000004" fill="#e56b3f"/><path d="M1180.2 390h39.6" stroke="#f5d7b8" stroke-width="3"/></g><g><path d="M300 217.6v18" stroke="#564838" stroke-width="3"/><ellipse cx="300" cy="280" rx="14.4" ry="20.0" fill="#e56b3f"/><path d="M285.6 280h28.8" stroke="#f5d7b8" stroke-width="3"/></g>
+<g fill="none" stroke="#f3e6cf" stroke-width="9" opacity=".38"><path d="M470 650c-70-90 40-135 10-230s55-130 15-210"/><path d="M1130 650c60-85-45-130-20-225s-40-120-5-205"/></g>
+<g fill="none" stroke="#74604d" stroke-width="4" stroke-linecap="round" opacity=".55"><path d="M300 230q12-10 24 0q12-10 24 0"/><path d="M388 192q9-8 18 0q9-8 18 0"/><path d="M224 158q7-6 14 0q7-6 14 0"/></g><polyline points="700,940 735,830 765,730 800,620 835,505" fill="none" stroke="#e56b3f" stroke-width="4" stroke-dasharray="12 16" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/><circle cx="700" cy="940" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/><circle cx="735" cy="830" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/><circle cx="765" cy="730" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/><circle cx="800" cy="620" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/><circle cx="835" cy="505" r="9" fill="#e56b3f" stroke="#fff" stroke-width="4"/>
+<rect width="1600" height="1000" filter="url(#grain)" opacity=".55"/>
+<g fill="none" stroke="#ffffff" stroke-opacity=".46">
+  <path d="M0 56H1600M0 944H1600M48 0V1000M1552 0V1000"/>
+  <path d="M40 48h16M40 48v16M1544 944h16M1560 944v-16"/>
+</g>
+<g fill="#98614e" font-family="Arial, sans-serif" font-size="14" letter-spacing="4" opacity=".62">
+  <text x="62" y="45">CITYWALK / FIELD STUDY</text>
+  <text x="62" y="980">31°14′N  121°28′E</text>
+</g>
+</svg>
