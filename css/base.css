@@ -22,7 +22,6 @@
   --max: 1280px;
   --header-h: 76px;
   --font-sans: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
-  --font-serif: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
 }
 
 *,
@@ -41,8 +40,9 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.75;
+  font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -99,13 +99,16 @@ h2,
 h3,
 h4 {
   line-height: 1.2;
-  font-weight: 650;
+  font-weight: 700;
+}
+
+h3 {
+  line-height: 1.35;
 }
 
 h1,
 h2 {
-  font-family: var(--font-serif);
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 p {

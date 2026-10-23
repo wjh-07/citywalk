@@ -123,8 +123,7 @@
   function renderCityCard(city) {
     const routes = getRoutesByCity(city.id);
     return '<a class="city-card" href="city.html?id=' + encodeURIComponent(city.id) + '">' +
-      '<img src="' + escapeHtml(city.heroImage) + '" alt="' + escapeHtml(city.name) + '城市封面" loading="lazy">' +
-      '<span class="city-card__shade" aria-hidden="true"></span>' +
+      '<span class="city-card__watermark" aria-hidden="true">' + escapeHtml(city.latin) + '</span>' +
       '<span class="city-card__content">' +
         '<span class="city-card__latin">' + escapeHtml(city.latin) + '</span>' +
         '<strong>' + escapeHtml(city.name) + '</strong>' +
@@ -139,10 +138,16 @@
     const city = getCity(route.cityId);
     const active = Storage.isFavorite(route.id);
     const compact = options && options.compact;
+    const cityRoutes = getRoutesByCity(route.cityId);
+    const routeNo = String(cityRoutes.findIndex(function (item) { return item.id === route.id; }) + 1).padStart(2, "0");
+    const stops = getStops(route);
     return '<article class="route-card' + (compact ? " route-card--compact" : "") + '">' +
       '<div class="route-card__media">' +
-        '<img src="' + escapeHtml(route.coverImage) + '" alt="' + escapeHtml((city ? city.name : "") + route.title) + '路线封面" loading="lazy">' +
-        '<span class="route-card__city">' + escapeHtml(city ? city.name : "") + '</span>' +
+        '<div class="cover">' +
+          '<span class="cover__no">NO.' + routeNo + ' / ' + escapeHtml(city ? city.name : '') + '</span>' +
+          '<span class="cover__seq">' + escapeHtml(stops.length ? stops[0].name : '') + '<i>→</i>' + escapeHtml(stops.length ? stops[stops.length - 1].name : '') + '</span>' +
+          '<span class="cover__foot">' + stops.length + ' 站 · ' + formatDuration(route.durationMinutes) + ' · ' + route.distanceKm + ' km</span>' +
+        '</div>' +
         '<button class="favorite-button' + (active ? " is-active" : "") + '" type="button" data-favorite="' + escapeHtml(route.id) + '" aria-pressed="' + active + '" aria-label="' + (active ? "取消收藏" : "收藏") + escapeHtml(route.title) + '">' + heartIcon() + '</button>' +
       '</div>' +
       '<div class="route-card__body">' +
@@ -172,6 +177,8 @@
   function renderDrawerContent(route) {
     const city = getCity(route.cityId);
     const stops = getStops(route);
+    const cityRoutes = getRoutesByCity(route.cityId);
+    const routeNo = String(cityRoutes.findIndex(function (item) { return item.id === route.id; }) + 1).padStart(2, "0");
     const plan = Storage.getPlan();
     const inPlan = Storage.routeInPlan(plan, route.id);
     const sameCity = Boolean(plan && plan.cityId === route.cityId);
@@ -197,9 +204,12 @@
     }).join("");
 
     return '<div class="drawer-panel__cover">' +
-        '<img src="' + escapeHtml(route.coverImage) + '" alt="' + escapeHtml(city.name + route.title) + '路线封面">' +
-        '<span class="drawer-panel__shade" aria-hidden="true"></span>' +
-        '<div class="drawer-panel__cover-copy"><span class="eyebrow eyebrow--light">' + escapeHtml(city.name) + ' / ' + escapeHtml(route.theme) + '</span><h2 id="drawer-title">' + escapeHtml(route.title) + '</h2><p>' + escapeHtml(route.summary) + '</p></div>' +
+        '<div class="cover">' +
+          '<span class="cover__no">NO.' + routeNo + ' / ' + escapeHtml(city.name) + '</span>' +
+          '<span class="cover__seq">' + escapeHtml(stops.length ? stops[0].name : '') + '<i>→</i>' + escapeHtml(stops.length ? stops[stops.length - 1].name : '') + '</span>' +
+          '<span class="cover__foot">' + stops.length + ' 站 · ' + formatDuration(route.durationMinutes) + ' · ' + route.distanceKm + ' km</span>' +
+        '</div>' +
+        '<div class="drawer-panel__cover-copy"><span class="eyebrow">' + escapeHtml(city.name) + ' / ' + escapeHtml(route.theme) + '</span><h2 id="drawer-title">' + escapeHtml(route.title) + '</h2><p>' + escapeHtml(route.summary) + '</p></div>' +
       '</div>' +
       '<div class="drawer-panel__body">' +
         '<div class="drawer-stats">' +

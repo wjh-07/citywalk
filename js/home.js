@@ -21,9 +21,9 @@
       }).join("");
     }
 
-    const heroImage = document.getElementById("hero-image");
-    if (heroImage && data.cities[0]) {
-      heroImage.src = data.cities[0].heroImage;
+    const heroName = document.getElementById("hero-name");
+    if (heroName && data.cities[0]) {
+      heroName.textContent = data.cities[0].name;
     }
 
     const searchForm = document.getElementById("home-search");

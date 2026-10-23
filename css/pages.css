@@ -143,10 +143,6 @@
   margin-bottom: 22px;
 }
 
-.city-hero__bg img {
-  background: var(--surface-alt);
-}
-
 .city-map-panel {
   display: grid;
   gap: 12px;
@@ -167,10 +163,9 @@
 }
 
 .city-selected__copy h3 {
-  font-family: var(--font-serif);
   font-size: 26px;
   font-weight: 600;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .city-selected__copy p {
@@ -199,7 +194,6 @@
 }
 
 .city-selected__meta strong {
-  font-family: var(--font-serif);
   font-size: 16px;
   font-weight: 600;
 }
@@ -321,5 +315,615 @@
   }
   .planner-toolbar .btn + .btn {
     margin-top: 4px;
+  }
+}
+
+/* ============================================================
+   第一阶段改版 · 老城人文速写皮肤
+   ------------------------------------------------------------
+   说明：
+   1. 只改样式，不新增 DOM，不触碰 js/ 下的任何业务逻辑；
+   2. pages.css 在所有页面最后加载，本段天然覆盖前三个样式表；
+   3. 配色：旧宣纸米 #f6f3ed / 赭石砖红 #9b4b38 /
+      正文 #2c2c2c / 次要 #666 / 点缀苔绿 #60784e；
+   4. 卡片：4px 以内小圆角、左侧 3px 赭石竖线、无放大动画。
+   ============================================================ */
+
+/* ---------- 01. 设计变量：把原来的绿灰配色换成纸墨配色 ---------- */
+:root {
+  --bg: #f6f3ed;              /* 旧宣纸米：页面底色 */
+  --surface: #fdfbf6;         /* 卡片纸白，比底色略亮一点 */
+  --surface-alt: #f0eade;     /* 次级纸面 */
+  --surface-deep: #e6ddcd;    /* 更深一层的旧纸 */
+
+  --ink: #2c2c2c;             /* 正文深墨 */
+  --ink-soft: #3b3733;
+  --muted: #666666;           /* 次要文字浅灰 */
+
+  --line: #ded5c5;            /* 纸张分隔线 */
+  --line-strong: #c8bca7;
+
+  --accent: #9b4b38;          /* 主色：赭石砖红 */
+  --accent-dark: #7d3a2a;     /* 主色按压/悬停 */
+  --accent-soft: #f2e4dc;     /* 主色淡染 */
+
+  --moss: #60784e;            /* 点缀：苔绿（只用于小面积） */
+  --moss-soft: #e6ebdf;
+
+  --warm: #9b4b38;            /* 原收藏/强调色并入赭石 */
+  --warm-soft: #f2e4dc;
+  --map-water: #e8e2d4;
+  --danger: #a44034;
+
+  /* 取消卡片的柔和模糊阴影；仅浮层保留一点很浅的投影 */
+  --shadow: 0 12px 28px rgba(44, 44, 44, 0.1);
+  --shadow-soft: none;
+
+  /* 全局圆角收缩到 4px 以内 */
+  --radius: 4px;
+  --radius-lg: 4px;
+}
+
+/* ---------- 02. 宣纸噪点：5%～7% 透明度覆盖全页 ---------- */
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  content: "";
+  opacity: 0.06;              /* 宣纸颗粒：取 6%，不压文字 */
+  pointer-events: none;       /* 只是纹理层，不拦截任何点击/滚动 */
+}
+
+/* ---------- 03. 标题排版统一交给 base/layout 的 P0 规则 ---------- */
+
+/* ---------- 04. 顶栏与页脚：从玻璃感回到纸面感 ---------- */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(246, 243, 237, 0.96);
+  backdrop-filter: none;
+}
+
+.brand__mark {
+  border-color: var(--accent);
+  border-radius: 2px;         /* 小方章，弱化圆标 */
+  color: var(--accent);
+}
+
+.menu-toggle {
+  border-radius: 3px;
+}
+
+.nav-count {
+  border-radius: 3px;
+  background: var(--moss-soft);
+  color: var(--moss);
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--surface-alt);
+}
+
+/* ---------- 05. 首页标题区：左对齐、留白、书卷感 ---------- */
+.home-hero {
+  padding: 88px 0 104px;      /* 上下留白拉开，标题不再顶满 */
+}
+
+.home-hero::before {
+  /* 原绿色氛围光改成极淡的赭石暖光 */
+  background: radial-gradient(circle at 76% 30%, rgba(155, 75, 56, 0.06), transparent 62%);
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 72px;
+}
+
+.hero-copy {
+  max-width: 680px;
+  text-align: left;           /* 标题明确左对齐 */
+}
+
+.hero-kicker {
+  margin-bottom: 26px;
+  color: var(--moss);
+}
+
+.hero-kicker::before {
+  background: var(--moss);
+}
+
+.hero-title {
+  text-align: left;
+}
+
+.hero-sub {
+  max-width: 470px;
+  margin-top: 28px;
+  line-height: 1.95;
+}
+
+.hero-search {
+  border-color: var(--line-strong);
+  border-radius: 4px;
+  background: var(--surface);
+  box-shadow: none;
+}
+
+.hero-search:focus-within {
+  border-color: var(--accent); /* 聚焦时才出现赭石细边 */
+}
+
+.hero-search input::placeholder {
+  color: #8b8375;
+}
+
+.hero-stats {
+  gap: 32px;
+  margin-top: 44px;
+  padding-top: 22px;
+}
+
+.hero-stat strong {
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* 右侧封面：小圆角、去大阴影 */
+.hero-art__image {
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+/* 浮在封面上的路线小卡：也遵循“左侧赭石竖线”的规则 */
+.hero-map-card {
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  background: rgba(253, 251, 246, 0.96);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.hero-map-card__top i {
+  background: var(--moss);
+  box-shadow: 0 0 0 4px var(--moss-soft);
+}
+
+.hero-map-card__line i {
+  background: var(--accent);
+}
+
+.hero-map-card__line span {
+  background: repeating-linear-gradient(90deg, var(--accent) 0 4px, transparent 4px 8px);
+}
+
+/* ---------- 06. 按钮：绿按钮统一换成赭石主色 ---------- */
+.btn {
+  border-radius: 3px;
+  background: var(--accent);
+  color: #fdfbf6;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: background-color 240ms ease, border-color 240ms ease, color 240ms ease;
+}
+
+.btn:hover {
+  background: var(--accent-dark);
+  transform: none;            /* 不再上浮，保持安静 */
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #fdfbf6;
+}
+
+.btn--primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn--outline {
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn--outline:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.btn--ghost:hover {
+  background: var(--surface-alt);
+  color: var(--ink);
+}
+
+/* 深色 CTA 上的反白按钮，改成暖纸色 */
+.btn--light {
+  background: var(--surface);
+  color: var(--accent-dark);
+}
+
+.btn--light:hover {
+  background: #f3ecdf;
+  color: var(--accent-dark);
+}
+
+/* ---------- 07. 卡片统一规则 ---------- */
+/* 7.1 小圆角、取消阴影 */
+.city-card,
+.route-card,
+.city-route-card,
+.how-card,
+.plan-item,
+.summary-card,
+.filter-panel,
+.city-map-panel,
+.city-selected,
+.planner-map-card,
+.planner-tip {
+  position: relative;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+/* 7.2 左侧 3px 赭石竖线（用伪元素实现，hover 加粗时不影响布局） */
+.city-card::before,
+.route-card::before,
+.city-route-card::before,
+.how-card::before,
+.plan-item::before,
+.summary-card::before,
+.filter-panel::before,
+.city-map-panel::before,
+.city-selected::before,
+.planner-map-card::before,
+.planner-tip::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  width: 3px;
+  border-radius: 4px 0 0 4px;
+  background: var(--accent);
+  content: "";
+  pointer-events: none;
+  transition: width 260ms ease, background-color 260ms ease;
+}
+
+/* 7.3 hover：竖线 3px -> 5px，不加放大、不位移 */
+.city-card:hover::before,
+.route-card:hover::before,
+.city-route-card:hover::before,
+.city-route-card.is-active::before,
+.how-card:hover::before,
+.plan-item:hover::before,
+.summary-card:hover::before,
+.filter-panel:hover::before,
+.city-map-panel:hover::before,
+.city-selected:hover::before,
+.planner-map-card:hover::before,
+.planner-tip:hover::before {
+  width: 5px;
+  background: var(--accent-dark);
+}
+
+/* ---------- 08. 各类卡片细节 ---------- */
+/* 城市封面卡：纯排版卡，版面交由 components.css 的 .cover / watermark */
+.city-card {
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.city-card:hover .city-card__arrow {
+  transform: none;
+}
+
+.city-card__arrow {
+  border-radius: 3px;
+}
+
+/* 路线卡 */
+.route-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: border-color 240ms ease, background-color 240ms ease;
+}
+
+.route-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: none;
+  transform: none;
+}
+
+.route-card__meta span::before {
+  background: var(--moss);    /* 小圆点用苔绿点缀 */
+}
+
+/* 步骤卡 */
+.how-card {
+  padding: 24px 22px 22px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.how-card__num {
+  color: var(--accent);
+}
+
+/* 城市页路线卡 */
+.city-route-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: border-color 240ms ease, background-color 240ms ease;
+}
+
+.city-route-card:hover,
+.city-route-card.is-active {
+  border-color: var(--line-strong);
+  background: var(--surface);
+  box-shadow: none;
+  transform: none;
+}
+
+.city-route-card__media {
+  border-radius: 2px;
+}
+
+/* 收藏按钮：小方章，不再放大 */
+.favorite-button {
+  border-color: rgba(253, 251, 246, 0.6);
+  border-radius: 3px;
+  background: rgba(253, 251, 246, 0.88);
+  backdrop-filter: none;
+}
+
+.favorite-button:hover {
+  background: var(--surface);
+  transform: none;
+}
+
+.favorite-button.is-active {
+  background: var(--surface);
+  color: var(--accent);
+}
+
+/* ---------- 09. 筛选、表单、标签 ---------- */
+.tag,
+.chip {
+  border-radius: 3px;
+}
+
+.chip.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.filter-search input,
+.sort-control select,
+.control input,
+.control select,
+.drawer-day select {
+  border-radius: 3px;
+}
+
+.filter-search input:focus,
+.sort-control select:focus,
+.control input:focus,
+.control select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.filter-panel {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.empty-state {
+  border-color: var(--line-strong);
+  border-radius: 4px;
+  background: rgba(253, 251, 246, 0.5);
+}
+
+.empty-state__icon {
+  color: var(--accent);
+}
+
+/* ---------- 10. 地图与轨迹 ---------- */
+.map-shell {
+  border-radius: 3px;
+  background: var(--surface-alt);
+}
+
+/* 去掉原来的绿色轨迹，跟随赭石主色（只作用于无 Key 的示意地图） */
+.map-fallback polyline {
+  stroke: var(--accent);
+}
+
+.fallback-marker__halo {
+  fill: rgba(155, 75, 56, 0.14);
+}
+
+.map-fallback__badge {
+  border-radius: 3px;
+  background: rgba(253, 251, 246, 0.92);
+  backdrop-filter: none;
+}
+
+.map-fallback__pulse {
+  background: var(--moss);
+  box-shadow: 0 0 0 4px var(--moss-soft);
+}
+
+.map-placeholder__cross {
+  color: var(--accent);
+}
+
+/* ---------- 11. 抽屉、弹窗、Toast ---------- */
+.route-drawer {
+  border-left: 3px solid var(--accent);
+  box-shadow: -12px 0 28px rgba(44, 44, 44, 0.16);
+}
+
+.drawer-close {
+  border-radius: 3px;
+  background: rgba(40, 33, 27, 0.36);
+  backdrop-filter: none;
+}
+
+.drawer-actions .btn--ghost.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.drawer-warning {
+  color: var(--accent);
+}
+
+.modal-backdrop {
+  background: rgba(40, 33, 27, 0.46);
+}
+
+.confirm-modal {
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+}
+
+.toast {
+  border-radius: 3px;
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.toast--error {
+  border-left-color: var(--danger);
+}
+
+/* ---------- 12. 行程规划页 ---------- */
+.plan-item {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: border-color 240ms ease, opacity 160ms ease;
+}
+
+.plan-item:hover {
+  border-color: var(--line-strong);
+  box-shadow: none;
+}
+
+.plan-item.is-drag-over {
+  border-color: var(--accent);
+}
+
+.plan-item__time {
+  color: var(--accent);
+}
+
+.plan-item__actions button,
+.plan-item__actions select {
+  border-radius: 3px;
+}
+
+.summary-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.day-tab {
+  border-radius: 3px;
+  background: var(--surface);
+}
+
+.day-tab.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.city-map-panel,
+.city-selected {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.planner-map-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.planner-map-card .map-shell {
+  border-radius: 0;
+}
+
+.planner-tip {
+  border: 1px solid var(--line);
+  background: linear-gradient(150deg, rgba(230, 235, 223, 0.8), rgba(253, 251, 246, 0.96));
+}
+
+/* ---------- 13. 首页结尾 CTA 与探索页底纹 ---------- */
+.home-cta {
+  background: var(--accent-dark);
+}
+
+/* 去掉原版两个大圆圈装饰，保持克制 */
+.home-cta::before,
+.home-cta::after {
+  display: none;
+}
+
+.explore-section {
+  background-image: radial-gradient(rgba(96, 120, 78, 0.1) 0.6px, transparent 0.6px);
+  background-size: 20px 20px;
+}
+
+.explore-section::before {
+  background: linear-gradient(var(--bg), rgba(246, 243, 237, 0));
+}
+
+.skip-link {
+  border-radius: 3px;
+}
+
+/* ---------- 14. 小屏适配（抵消上面无条件的留白覆盖） ---------- */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .primary-nav {
+    border-radius: 4px;
+    background: var(--surface);
+  }
+}
+
+@media (max-width: 640px) {
+  .home-hero {
+    padding: 46px 0 64px;
+  }
+
+  .hero-grid {
+    gap: 44px;
+  }
+
+  /* 移动端路线小卡会压住排版封面，抬高封面并给底部留出位置 */
+  .hero-art {
+    min-height: 440px;
+  }
+
+  .hero-art__image--type {
+    padding-bottom: 168px;
+  }
+
+  .hero-copy {
+    max-width: none;
   }
 }

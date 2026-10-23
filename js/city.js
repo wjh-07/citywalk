@@ -14,9 +14,15 @@
 
   function routeCard(route, active) {
     const favorite = Storage.isFavorite(route.id);
+    const routeNo = String(state.city.routeIds.indexOf(route.id) + 1).padStart(2, "0");
+    const stops = UI.getStops(route);
     return '<article class="city-route-card' + (active ? " is-active" : "") + '" data-city-route="' + escape(route.id) + '">' +
       '<div class="city-route-card__media">' +
-        '<img src="' + escape(route.coverImage) + '" alt="' + escape(state.city.name + route.title) + '路线封面" loading="lazy">' +
+        '<div class="cover">' +
+          '<span class="cover__no">NO.' + routeNo + ' / ' + escape(state.city.name) + '</span>' +
+          '<span class="cover__seq">' + escape(stops.length ? stops[0].name : '') + '<i>→</i>' + escape(stops.length ? stops[stops.length - 1].name : '') + '</span>' +
+          '<span class="cover__foot">' + stops.length + ' 站 · ' + UI.formatDuration(route.durationMinutes) + ' · ' + route.distanceKm + ' km</span>' +
+        '</div>' +
         '<button class="favorite-button' + (favorite ? " is-active" : "") + '" type="button" data-favorite="' + escape(route.id) + '" aria-pressed="' + favorite + '" aria-label="' + (favorite ? "取消收藏" : "收藏") + escape(route.title) + '">' + UI.heartIcon() + '</button>' +
       '</div>' +
       '<div class="city-route-card__body">' +
@@ -88,7 +94,6 @@
     const hero = document.getElementById("city-hero");
     const content = document.getElementById("city-content");
     const empty = document.getElementById("city-empty");
-    const heroImage = document.getElementById("city-hero-image");
     const latin = document.getElementById("city-latin");
     const name = document.getElementById("city-name");
     const tagline = document.getElementById("city-tagline");
@@ -98,10 +103,6 @@
     if (hero) hero.hidden = false;
     if (content) content.hidden = false;
     if (empty) empty.hidden = true;
-    if (heroImage) {
-      heroImage.src = state.city.heroImage;
-      heroImage.alt = state.city.name + "城市氛围封面";
-    }
     if (latin) latin.textContent = state.city.latin + " / " + state.city.id.toUpperCase();
     if (name) name.textContent = state.city.name;
     if (tagline) tagline.textContent = state.city.tagline;
